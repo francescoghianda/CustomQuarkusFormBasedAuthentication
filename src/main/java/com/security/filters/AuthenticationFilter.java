@@ -1,9 +1,9 @@
 package com.security.filters;
 
+import com.security.cookie.SessionCookieProvider;
 import com.security.utils.AuthenticationIdentity;
 import com.security.exception.MalformedCookieException;
-import com.security.cookie.SessionCookie;
-import com.security.cookie.SessionCookieProvider;
+import com.security.cookie.impl.SessionCookie;
 import com.security.config.SecurityConfiguration;
 
 import javax.annotation.Priority;

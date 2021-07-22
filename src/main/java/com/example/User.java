@@ -2,13 +2,15 @@ package com.example;
 
 //import io.quarkus.security.jpa.*;
 
+import com.security.service.UserEntity;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "user")
-public class User {
+public class User implements UserEntity {
 
     @Id
     private int id;

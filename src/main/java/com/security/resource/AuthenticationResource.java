@@ -1,15 +1,11 @@
 package com.security.resource;
 
-import com.example.User;
-import com.security.cookie.SessionCookie;
-import com.security.exception.MalformedCookieException;
-import com.security.service.AuthenticationService;
 import com.security.cookie.SessionCookieProvider;
+import com.security.service.AuthenticationService;
 import com.security.config.SecurityConfiguration;
+import com.security.service.UserEntity;
 
 import javax.inject.Inject;
-//import javax.servlet.ServletContext;
-//import javax.servlet.SessionTrackingMode;
 import javax.ws.rs.*;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.core.Context;
@@ -36,7 +32,7 @@ public class AuthenticationResource {
     @Path("/login")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public Response login(@FormParam("username") String username, @FormParam("password") String password, @CookieParam("redirect") String redirectPath){
-        Optional<User> user = authService.login(username, password);
+        Optional<UserEntity> user = authService.login(username, password);
         if(user.isEmpty()) return Response.status(Response.Status.FORBIDDEN).build();
 
         Response.ResponseBuilder response;
